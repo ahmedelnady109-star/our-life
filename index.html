@@ -7,12 +7,13 @@
 <style>
 body {
     text-align: center;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #ffe6eb;
 }
 
 h1 {
     color: #e6005c;
+    margin-top: 30px;
 }
 
 button {
@@ -23,6 +24,7 @@ button {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -34,8 +36,16 @@ button:hover {
     margin-top: 20px;
     color: #333;
 }
-</style>
 
+img#myImage {
+    display: block;
+    margin: 20px auto;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+</style>
 </head>
 
 <body>
@@ -44,9 +54,15 @@ button:hover {
 
 <button onclick="pick()">🎲 اختارى يلا</button>
 
-<img id="myImage" src="IMG_٢٠٢٥٠١٠٩_١٦٠١٠٧" alt="نشاطنا" width="300">
-    
+<!-- الصورة اللي رفعتها -->
+<img id="myImage" src="IMG_٢٠٢٥٠١٠٩_١٦٠١٠٧.jpg" alt="نشاطنا">
+
 <p id="result"></p>
+
+<!-- الصوت -->
+<audio id="myAudio">
+  <source src="sound.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 let list = [
@@ -86,8 +102,15 @@ let list = [
 ];
 
 function pick() {
-let random = Math.floor(Math.random() * list.length);
-document.getElementById("result").innerText = list[random];
+    // اختيار نشاط عشوائي
+    let random = Math.floor(Math.random() * list.length);
+    document.getElementById("result").innerText = list[random];
+
+    // تشغيل الصوت
+    let audio = document.getElementById("myAudio");
+    audio.play();
+
+    // لو عايز الصورة تتغير حسب النشاط، ممكن تعدل هنا
 }
 </script>
 
